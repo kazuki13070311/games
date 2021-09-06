@@ -1,4 +1,6 @@
+= link_to "Game_App", root_path,class: "mx-2 link-dark"
+= link_to "ユーザー一覧" , users_path, class: "link-dark"
 - if logged_in?
-  = link_to 'ログアウト', logout_path, method: :delete
+  = link_to 'ログアウト', logout_path, method: :delete,class: "mx-2 link-dark"
 - else
-  = link_to 'ログイン', login_path
+  = link_to 'ログイン', login_path,class: "mx-2 link-dark"

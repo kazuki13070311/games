@@ -1,1 +1,17 @@
 @import "bootstrap";
+
+/*トップページ*/
+.jumbotron-extend{
+    position: relative;
+    height: 70vh;
+    width: 100%;
+    min-height: 250px;
+    background: image-url('game1.jpg')no-repeat center center;
+    background-size: cover;
+    background-color:rgba(255,255,255,0.1);
+    background-blend-mode:lighten;
+}
+
+.site-name{
+  backdrop-filter: blur(2px);
+}
