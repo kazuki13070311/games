@@ -5,8 +5,12 @@
           .col-8.mx-auto.my-5.pt-5.text-center
             h1.site-name.text-center Game App
             br
-            = link_to 'ログイン', login_path,class: "mt-5 mx-2 btn btn-dark"
-            = link_to '新規登録', new_user_path,class: "mt-5 mx-2 btn btn-dark"
+            - if logged_in?
+              h3
+                |ゲームの世界へようこそ！
+            - else
+              = link_to 'ログイン', login_path,class: "mt-5 mx-2 btn btn-dark"
+              = link_to '新規登録', new_user_path,class: "mt-5 mx-2 btn btn-dark"
 
 .container
   .row

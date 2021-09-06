@@ -1,5 +1,16 @@
 @import "bootstrap";
 
+/*8bit文字*/
+@font-face {
+	font-family: PixelMplus10-Regular;
+	src: url('https://kuneoresearch.com/wp-content/themes/stinger5verkuneo/font/PixelMplus10-Regular.ttf') format("truetype");
+}
+
+body{
+  font-family: PixelMplus10-Regular;
+}
+
+
 /*トップページ*/
 .jumbotron-extend{
     position: relative;
