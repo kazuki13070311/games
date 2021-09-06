@@ -1,2 +1,15 @@
-h1 Users#index
-p Find me in app/views/users/index.html.slim
+.container
+  .row
+    .col-6.mx-auto.mt-5
+      h1 ユーザー一覧
+      - @users.each do |user|
+        .card
+          .card-header
+            |名前：
+            = user.name
+          .card-body
+            |登録日：
+            = l user.created_at
+          .card-footer
+            = link_to "詳細" , user_path(user), class: "btn btn-primary"
+        br

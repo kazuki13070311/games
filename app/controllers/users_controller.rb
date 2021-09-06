@@ -6,9 +6,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def index; end
+  def index
+    @users = User.all
+  end
 
-  def show; end
+  def show
+    @user = User.find(params[:id])
+  end
 
   def create
     @user = User.new(user_params)

@@ -1,2 +1,12 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+.container
+  .row
+    .col-6.mx-auto.mt-5
+      h1 ユーザー一覧
+      = link_to "一覧" , users_path, class: "btn btn-primary mb-3"
+      .card
+        .card-header
+          |名前：
+          = @user.name
+        .card-body
+          |登録日：
+          = l @user.created_at
