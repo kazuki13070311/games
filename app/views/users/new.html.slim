@@ -1,16 +1,32 @@
-h1 新規登録フォーム
-= form_with model: @user, local: true do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name
-  .form-group
-    = f.label :email
-    = f.text_field :email
-  .form-group
-    = f.label :password
-    = f.password_field :password
-  .form-group
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-  .form-group
-    = f.submit '登録'
+.container
+  .row
+    .col-8.mx-auto.my-5
+      br
+      .card
+        .card-body
+          h1 新規登録フォーム
+          = form_with model: @user, local: true do |f|
+            .form-group
+              = f.label :name
+              br
+              = f.text_field :name, class: "form-control"
+              br
+            .form-group
+              = f.label :email
+              br
+              = f.text_field :email, class: "form-control"
+              br
+            .form-group
+              = f.label :password
+              br
+              = f.password_field :password,class: "form-control"
+              br
+            .form-group
+              = f.label :password_confirmation
+              br
+              = f.password_field :password_confirmation,class: "form-control"
+              br
+            .form-group
+              = f.submit '登録'
+          br
+            = link_to 'ログイン', login_path
