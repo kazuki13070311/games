@@ -1,5 +1,6 @@
 = link_to "Game_App", root_path,class: "mx-2 link-dark"
 = link_to "ユーザー一覧" , users_path, class: "link-dark"
+= link_to "投稿一覧" , posts_path, class: "mx-2 link-dark"
 - if logged_in?
   = link_to 'ログアウト', logout_path, method: :delete,class: "mx-2 link-dark"
 - else
