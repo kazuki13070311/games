@@ -1,5 +1,5 @@
 class TopsController < ApplicationController
   def top
-    @user = User.all
+    @users = User.all
   end
 end

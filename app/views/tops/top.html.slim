@@ -7,3 +7,19 @@
             br
             = link_to 'ログイン', login_path,class: "mt-5 mx-2 btn btn-dark"
             = link_to '新規登録', new_user_path,class: "mt-5 mx-2 btn btn-dark"
+
+.container
+  .row
+    .col-6.mx-auto.mt-5
+      h1.text-center ユーザー一覧
+      - @users.each do |user|
+        .card
+          .card-header
+            |名前：
+            = user.name
+          .card-body
+            |登録日：
+            = l user.created_at
+          .card-footer
+            = link_to "詳細" , user_path(user), class: "btn btn-primary"
+        br
