@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-6.mx-auto.mt-5
+      h1 投稿詳細
+      = link_to "一覧" , posts_path, class: "btn btn-primary mb-3"
+      .card
+        .card-header
+          |タイトル：
+          = @post.title
+        .card-body
+          |おすすめ内容：
+          = @post.description
+        .card-footer
+          |登録日：
+          = l @post.created_at

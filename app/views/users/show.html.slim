@@ -1,7 +1,9 @@
 .container
   .row
     .col-6.mx-auto.mt-5
-      h1 ユーザー一覧
+      h1 
+        = @user.name
+        |さんのページ
       = link_to "一覧" , users_path, class: "btn btn-primary mb-3"
       .card
         .card-header
