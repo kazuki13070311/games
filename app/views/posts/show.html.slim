@@ -20,6 +20,7 @@
       - @comments.each do |comment|
         hr
         = comment.content
+        = link_to "削除", comment_path(comment.id), method: :delete
       br
       = form_with(model: [@post, @comment], local: true) do |f|
         = f.text_area :content, placeholder: "コメントする", rows: 3,class: 'form-control'

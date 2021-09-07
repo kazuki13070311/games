@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to posts_path
+  end
+
   private
 
     def params_comment
