@@ -66,3 +66,6 @@ gem 'rails-i18n'
 
 # ログイン系
 gem 'sorcery'
+
+# デバック
+gem 'pry-rails'

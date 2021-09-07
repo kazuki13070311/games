@@ -13,3 +13,16 @@
         .card-footer
           |登録日：
           = l @post.created_at
+          br
+      br
+      h2.mt-5
+        |▶︎コメント一覧
+      - @comments.each do |comment|
+        hr
+        = comment.content
+      br
+      = form_with(model: [@post, @comment], local: true) do |f|
+        = f.text_area :content, placeholder: "コメントする", rows: 3,class: 'form-control'
+        = f.hidden_field :post_id, value: @post.id
+        br
+        = f.submit 'コメント投稿'
