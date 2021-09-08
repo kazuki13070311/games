@@ -24,6 +24,16 @@ class PostsController < ApplicationController
     @comments = @post.comments
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if current_user.id == @post.user.id
+      @post.destroy
+      redirect_back(fallback_location: root_path, notice: "投稿を削除しました")
+    else
+      redirect_back(fallback_location: root_path, notice: '削除に失敗しました。')
+    end 
+  end
+
   private
 
     def post_params

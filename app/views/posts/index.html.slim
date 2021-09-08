@@ -16,4 +16,6 @@
             = l post.created_at
           .card-footer
             = link_to "詳細" , post_path(post), class: "btn btn-primary"
+            - if post.user == current_user
+              = link_to "削除", post_path(post), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" }, class: "btn btn-primary mx-3"
         br
