@@ -17,10 +17,13 @@
       br
       h2.mt-5
         |▶︎コメント一覧
-      - @comments.each do |comment|
-        hr
-        = comment.content
-        = link_to "削除", comment_path(comment.id), method: :delete
+      .media
+        - @comments.each do |comment|
+          hr
+          .media-body
+            = comment.content
+            - if comment.user == current_user
+              = link_to "削除", post_comment_path(@post,comment), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" }
       br
       = form_with(model: [@post, @comment], local: true) do |f|
         = f.text_area :content, placeholder: "コメントする", rows: 3,class: 'form-control'

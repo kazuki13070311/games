@@ -3,15 +3,21 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params_comment)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_back(fallback_location: root_path,notice: '投稿が完了しました。')
+      redirect_back(fallback_location: root_path, notice: '投稿が完了しました。')
     else
-      redirect_back(fallback_location: root_path,notice: '投稿に失敗しました。')
+      redirect_back(fallback_location: root_path, notice: '投稿に失敗しました。')
     end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to posts_path
+    @post = Post.find(params[:post_id])
+    comment = @post.comments.find(params[:id])
+    if current_user.id == comment.user.id
+      comment.destroy
+      redirect_back(fallback_location: root_path, notice: "コメントを削除しました")
+    else
+      redirect_back(fallback_location: root_path, notice: '削除に失敗しました。')
+    end 
   end
 
   private
