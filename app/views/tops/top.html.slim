@@ -27,3 +27,22 @@
           .card-footer
             = link_to "詳細" , user_path(user), class: "btn btn-primary"
         br
+.container
+  .row
+    .col-6.mx-auto.mt-5
+      h1 投稿一覧
+      - @posts.each do |post|
+        .card
+          .card-header
+            |タイトル：
+            = post.title
+          .card-body
+            |おすすめ内容：
+            = post.description
+          .card-footer
+            |登録日：
+            = l post.created_at
+          .card-footer
+            = link_to "詳細" , post_path(post), class: "btn btn-primary"
+            - if post.user == current_user
+              = link_to "削除", post_path(post), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" }, class: "btn btn-primary mx-3"
