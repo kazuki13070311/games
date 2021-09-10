@@ -12,5 +12,6 @@ html
       = render 'shared/header'
     
     - if flash.notice.present?
-      .alert.alert-success= flash.notice
+      //.alert.alert-success= flash.notice
+      .blackboard.question= flash.notice
     = yield
