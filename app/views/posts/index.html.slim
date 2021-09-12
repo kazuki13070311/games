@@ -6,6 +6,9 @@
       - @posts.each do |post|
         .card
           .card-header
+            |投稿者：
+            = link_to post.user.name, user_path(post.user)
+            br
             |タイトル：
             = post.title
           .card-body

@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       @post.create_notification_comment!(current_user, @comment.id)
+      NotificationMailer.comment_create(@comment).deliver
       redirect_back(fallback_location: root_path, notice: '投稿が完了しました。')
     else
       redirect_back(fallback_location: root_path, notice: '投稿に失敗しました。')

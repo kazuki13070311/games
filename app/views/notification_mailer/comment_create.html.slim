@@ -1,0 +1,17 @@
+h2 ▼概要
+p 
+  = @post.user.name
+  |さんが
+  = l @post.created_at
+  |に投稿した
+  br
+  = link_to @post.title,post_url(@comment.post_id)
+  |の募集投稿に
+  br
+  = @user.name
+  |さんからコメントがありました。
+h2 ▼コメント内容
+p 
+  = @comment.content
+h3 
+  = link_to "コメントを確認しに行く", post_url(@comment.post_id)
