@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   # ログインしていない状態でsessionコントローラーを使用する様にする為
-  skip_before_action:require_login
+  skip_before_action :require_login
 
   def new; end
 

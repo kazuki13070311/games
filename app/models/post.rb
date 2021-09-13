@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
 
-  def create_notification_comment!(current_user,comment_id)
+  def create_notification_comment!(current_user, comment_id)
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
@@ -21,12 +21,8 @@ class Post < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visiter_id == notification.visited_id
 
-    if notification.valid?
-      notification.save
-    end
+    notification.save if notification.valid?
   end
 end

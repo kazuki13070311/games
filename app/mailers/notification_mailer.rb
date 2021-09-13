@@ -6,6 +6,6 @@ class NotificationMailer < ApplicationMailer
     mail(
       subject: "#{@user.name}さんからコメントがありました",
       to: @user.email
-    ) 
+    )
   end
 end
