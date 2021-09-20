@@ -61,6 +61,7 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'bootstrap'
+gem 'jquery-rails'
 
 # 国際化
 gem 'rails-i18n'
