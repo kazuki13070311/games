@@ -1,26 +1,26 @@
-.container
-  .row
-    .col-8.mx-auto.my-5
-      br
-      .card
-        .card-body
-          h1 ログインフォーム
-          = form_with url: login_path, local: true do |f|
-            .form-group
-              = f.label :email
-              br
-              = f.text_field :email,class: "form-control"
-              br
-            .form-group
-              = f.label :password
-              br
-              = f.password_field :password,class: "form-control"
-              br
-            .form-group
-              = f.submit 'ログイン'
-          br
-            = link_to '新規登録', new_user_path
-      br
-      .blackboard.question
-        p
-          |＊ログイン情報を入力してください
+.login_backgrand
+  .container
+    .row
+      .col-8.mx-auto.my-5
+        br
+        .card.blackboard.question
+          .card-body
+            h1 ログイン
+            = form_with url: login_path, local: true do |f|
+              .form-group
+                = f.label :email
+                br
+                = f.text_field :email,class: "form-control"
+                br
+              .form-group
+                = f.label :password
+                br
+                = f.password_field :password,class: "form-control"
+                br
+              .form-group
+                = f.submit 'ログイン'
+            br
+              = link_to '新規登録', new_user_path
+        .blackboard.question
+          p
+            |＊ログイン情報を入力してください

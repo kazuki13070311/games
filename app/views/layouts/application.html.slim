@@ -8,8 +8,9 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .navbar.navbar-expand-lg.navbar-light.bg-primary
-      = render 'shared/header'
+    - if logged_in?
+      .navbar.navbar-expand-lg.navbar-light.bg-primary
+        = render 'shared/header'
     
     - if flash.notice.present?
       //.alert.alert-success= flash.notice
