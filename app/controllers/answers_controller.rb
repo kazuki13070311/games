@@ -9,6 +9,17 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    answer = Answer.find(params[:id])
+    if current_user.id == answer.user.id
+      binding.pry
+      answer.destroy
+      redirect_back(fallback_location: root_path, notice: 'コメントを削除しました')
+    else
+      redirect_back(fallback_location: root_path, notice: '削除に失敗しました。')
+    end
+  end
+
   private
 
   def params_answer

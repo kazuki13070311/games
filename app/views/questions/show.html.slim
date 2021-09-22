@@ -21,7 +21,7 @@
       h2.mt-5
         |▶︎回答一覧
       .media
-        - @answers.each do |answer|
+        - @question.answers.each do |answer|
           hr
           .media-body
             |回答者：
@@ -29,7 +29,22 @@
             br
             = answer.body
             - if answer.user == current_user
-              //= link_to "削除", post_comment_path(@post,comment), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" }
+              = link_to "削除", answer_path(answer.id), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" },class: "mx-3"
+              = link_to '返事をする', new_answer_reaction_path(answer.id)
+          .container
+            .row
+              .col-6.mx-auto.mt-5
+                .media
+                  - answer.reactions.each do |reaction|
+                    hr
+                    .media-body
+                      |回答者：
+                      = link_to reaction.user.name, user_path(reaction.user)
+                      br
+                      = reaction.body
+                      - if reaction.user == current_user
+                        = link_to "削除", reaction_path(reaction.id), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" },class: "mx-3"
+                        = link_to '返事をする', new_answer_reaction_path(answer.id)
       br
       = form_with(model: [@question, @answer], local: true) do |f|
         = f.text_area :body, placeholder: "回答する", rows: 3,class: 'form-control'
