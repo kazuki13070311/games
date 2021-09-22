@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :questions, shallow: true do
+    resources :answers, shallow: true do
+      resources :reactions
+    end
+  end
   root 'tops#top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users

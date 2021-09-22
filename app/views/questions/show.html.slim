@@ -1,0 +1,53 @@
+.container
+  .row
+    .col-6.mx-auto.mt-5
+      h1 投稿詳細
+      = link_to "一覧" , posts_path, class: "btn btn-primary mb-3"
+      .card
+        .card-header
+          |投稿者：
+          = link_to @question.user.name, question_path(@question.user)
+          br
+          |タイトル：
+          = @question.title
+        .card-body
+          |質問内容：
+          = @question.body
+        .card-footer
+          |登録日：
+          = l @question.created_at
+          br
+      br
+      h2.mt-5
+        |▶︎回答一覧
+      .media
+        - @question.answers.each do |answer|
+          hr
+          .media-body
+            |回答者：
+            = link_to answer.user.name, user_path(answer.user)
+            br
+            = answer.body
+            - if answer.user == current_user
+              = link_to "削除", answer_path(answer.id), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" },class: "mx-3"
+              = link_to '返事をする', new_answer_reaction_path(answer.id)
+          .container
+            .row
+              .col-6.mx-auto.mt-5
+                .media
+                  - answer.reactions.each do |reaction|
+                    hr
+                    .media-body
+                      |回答者：
+                      = link_to reaction.user.name, user_path(reaction.user)
+                      br
+                      = reaction.body
+                      - if reaction.user == current_user
+                        = link_to "削除", reaction_path(reaction.id), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" },class: "mx-3"
+                        = link_to '返事をする', new_answer_reaction_path(answer.id)
+      br
+      = form_with(model: [@question, @answer], local: true) do |f|
+        = f.text_area :body, placeholder: "回答する", rows: 3,class: 'form-control'
+        = f.hidden_field :question_id, value: @question.id
+        br
+        = f.submit 'コメント投稿'

@@ -1,0 +1,24 @@
+.container
+  .row
+    .col-6.mx-auto.mt-5
+      h1 質問投稿一覧
+      = link_to "新規投稿" , new_question_path, class: "btn btn-primary my-3"
+      - @questions.each do |question|
+        .card
+          .card-header
+            |投稿者：
+            = link_to question.user.name, user_path(question.user)
+            br
+            |タイトル：
+            = question.title
+          .card-body
+            |質問内容：
+            = question.body
+          .card-footer
+            |質問日：
+            = l question.created_at
+          .card-footer
+            = link_to "詳細" , question_path(question), class: "btn btn-primary"
+            - if question.user == current_user
+              = link_to "削除", question_path(question), method: :delete, data: { confirm: "投稿を削除してもよろしいですか？" }, class: "btn btn-primary mx-3"
+        br
