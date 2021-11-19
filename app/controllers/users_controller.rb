@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.sort_by{ |user| user.name.gsub(/(\d+)/) { |a| a - a} }
   end
 
   def show

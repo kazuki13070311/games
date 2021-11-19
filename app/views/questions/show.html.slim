@@ -31,6 +31,12 @@
             - if answer.user == current_user
               = link_to "削除", answer_path(answer.id), method: :delete, data: { confirm: "コメントを削除してもよろしいですか？" },class: "mx-3"
               = link_to '返事をする', new_answer_reaction_path(answer.id)
+            //= if answer.question.best_answer_id == answer.id
+              |ベストアンサーです！
+          = form_with(model: @question, local: true) do |f|
+            = f.hidden_field :best_answer_id, value: answer.id
+            .actions
+              = f.submit 'BA'
           .container
             .row
               .col-6.mx-auto.mt-5

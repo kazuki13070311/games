@@ -18,6 +18,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def update
+    @question = Question.find(params[:id])
+    @question.update(question_params)
+    redirect_back(fallback_location: root_path, notice: 'ベストアンサーに指定しました')
+  end
+
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
