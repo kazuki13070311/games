@@ -5,12 +5,12 @@ onload = function(){
     console.log(textContents[i].clientHeight)
     if(textContents[i].clientHeight < 200){
       moreButton[i].style.display = 'none';
-      moreButton[i].addEventListener('click', function(){
-        console.log("test")
-        textContents[i].classList.toggle('is-open');
-        moreButton[i].classList.toggle('is-open1');
-      },false);
     }
+    moreButton[i].addEventListener('click', function(){
+      console.log("test")
+      textContents[i].classList.toggle('is-open');
+      moreButton[i].classList.toggle('is-open1');
+    },false);
   }
   // for(let i = 0; i < moreButton.length; i++){
   //   console.log(i)
