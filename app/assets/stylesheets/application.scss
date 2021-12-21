@@ -93,3 +93,50 @@ body{
 @-webkit-keyframes blink {
  50% { opacity: 0; }
 }
+
+/*ベストアンサー背景*/
+.best-answer{
+  background-color: red;
+  color: white;
+}
+
+/*スマホ下部メニュー*/
+.footer-menu-bar
+{
+  text-align: center;
+  position: fixed;        /* 要素の位置を固定する */
+  bottom: 0;              /* 絶対位置を指定する(下0px) */
+  background-color: rgba(245, 236, 236, 0.85); /* 背景は透過させる */
+}
+
+// text
+.text{
+  max-height: 200px;
+  overflow: hidden;
+
+  // 全文表示
+  &.is-open{
+    max-height: 300px !important;
+  }
+}
+
+.more {
+  position: relative;
+  bottom: 29px;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(
+  180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 60%
+  );
+  &.is-open1{
+    font-size: 0;
+    bottom: 20px !important;
+    p:after {
+      font-size: 16px;
+      content: "-  閉じる";
+    }
+  }
+}
+

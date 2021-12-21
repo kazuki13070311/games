@@ -6,7 +6,9 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
   body
     - if logged_in?
       .navbar.navbar-expand-lg.navbar-light.bg-primary
@@ -16,3 +18,4 @@ html
       //.alert.alert-success= flash.notice
       .blackboard.question= flash.notice
     = yield
+    = render 'shared/footer'
