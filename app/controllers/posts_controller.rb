@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user).all
+    @replacement_word = User.where(name: "かっちゃん").pluck(:name)
+    @replacement_description_word = ["t","テ"]
   end
 
   def new
